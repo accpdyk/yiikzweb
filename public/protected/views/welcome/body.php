@@ -15,9 +15,6 @@
         <div class="top_link">
             <ul>
                 <li class="welcome">您好：<?php echo user()->getName();?>,欢迎登陆！</li>
-                <li><a href="http://127.0.0.1:90/dede/index_body.php" target="main">系统主页</a></li>
-                <li><a href="http://127.0.0.1:90/index.php?upcache=1" target="_blank">网站主页</a></li>
-                <li><a href="http://127.0.0.1:90/member" target="_blank">会员中心</a></li>
                 <li><a href="<?php  echo url('login/out')?>" target="_top">注销</a></li>
             </ul>
             <div class="quick"> <a href="#" class="ac_qucikmenu" id="ac_qucikmenu">快捷方式</a> <a href="#" class="ac_qucikadd" id="ac_qucikadd">
