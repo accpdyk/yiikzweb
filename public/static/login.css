@@ -1,0 +1,53 @@
+A:link {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY:"黑体"; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 9pt; COLOR: #333333; FONT-FAMILY:"黑体"; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 9pt; COLOR: #cc0066; FONT-FAMILY:"黑体"; TEXT-DECORATION: underline
+}
+A:active {
+	FONT-SIZE: 9pt; COLOR: #009999; FONT-FAMILY:"黑体"; TEXT-DECORATION: none
+}
+.fieldsetcolor {
+	BORDER-RIGHT: #006699 1px solid; BORDER-TOP: #006699 1px solid; FONT-WEIGHT: lighter; FONT-SIZE: 9pt; BORDER-LEFT: #006699 1px solid; LINE-HEIGHT: 9pt; BORDER-BOTTOM: #006699 1px solid; FONT-STYLE: normal; FONT-FAMILY:"黑体"
+}
+.font9 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 18px; FONT-FAMILY:"黑体"
+}
+.pt1 {
+	LINE-HEIGHT: 1pt
+}
+.pt9 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 12pt; FONT-FAMILY:"黑体"
+}
+.border {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: black 0px solid; FONT-WEIGHT: lighter; FONT-SIZE: 9pt; BORDER-LEFT: black 0px solid; LINE-HEIGHT: 12pt; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY:"黑体"
+}
+.lineborder {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY:"黑体"
+}
+.rightborder {
+	BORDER-RIGHT: #000000 0px dotted; BORDER-TOP: black 0px dotted; BORDER-LEFT: #009999 1px dotted; BORDER-BOTTOM: #000000 0px dotted
+}
+.pt4 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 6px; FONT-FAMILY:"黑体"
+}
+.lfborder {
+	BORDER-RIGHT: #009999 1px dotted; BORDER-TOP: black 0px dotted; BORDER-LEFT: #009999 0px dotted; BORDER-BOTTOM: #009999 0px dotted
+}
+.upborder {
+	BORDER-RIGHT: #009999 0px dotted; BORDER-TOP: black 1px dotted; BORDER-LEFT: #009999 0px dotted; BORDER-BOTTOM: #009999 0px dotted
+}
+.downborder {
+	BORDER-RIGHT: #009999 0px dotted; BORDER-TOP: black 0px dotted; BORDER-LEFT: #009999 0px dotted; BORDER-BOTTOM: #009999 1px dotted
+}
+.3border {
+	BORDER-RIGHT: #009999 1px dotted; BORDER-TOP: black 1px dotted; BORDER-LEFT: #009999 0px dotted; BORDER-BOTTOM: #009999 1px dotted
+}
+.2border {
+	BORDER-RIGHT: #009999 1px dotted; BORDER-TOP: black 0px dotted; BORDER-LEFT: #009999 0px dotted; BORDER-BOTTOM: #009999 1px dotted
+}
+.frmtxt{BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; COLOR: #000000; BORDER-BOTTOM: #000000 1px solid; width: 100px;}
+.errorMessage{ color: #ff4500;}
