@@ -173,7 +173,7 @@ class GiiModule extends CWebModule
 				'default/error',
 			);
 			if($this->password!==false && Yii::app()->user->isGuest && !in_array($route,$publicPages))
-				Yii::app()->user->loginRequired();
+			Yii::app()->user->loginRequired();
 			else
 				return true;
 		}

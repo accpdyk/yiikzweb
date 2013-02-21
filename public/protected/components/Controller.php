@@ -26,7 +26,7 @@ class Controller extends CController
      */
     public $searchFormModel;
 
-    public function filters()
+  /*  public function filters()
     {
         return array(
             'accessControl', //必须加上这个函数，要不然下面的rules就没法引用，也就不起作用了
@@ -45,7 +45,7 @@ class Controller extends CController
                 'users'=>array('*'),
             )
         );
-    }
+    }*/
     //部门键值数组列表
     public  function  getDepartmentList(){
 
