@@ -2,29 +2,32 @@
 <div class="content">
     <h3><?php echo $this->pageTitle;?></h3>
     <?php
-    $this->renderPartial('_search',array('model'=>$model,'data'=>$this->getDepartmentList()))?>
-    <?php
-    $this->widget('CTabView',array(
+    $this->widget('My_TabView',array(
+        'activeTab'=>$this->showTab(),
+
         'tabs'=>array(
             'tab1'=>array(
-                'title'=>"提交报告",
-                'view'=>'_tab',
-               'data'=>array('data'=>$model->search('self'))
+                'title'=>"用户提交报告",
+                'url'=>url('workreport/info',array('type'=>'self')),
+                'view'=>$tab,
+                'data'=>array('data'=>$data)
 
             ),
             'tab2'=>array(
-                'title'=>'本部门人员报告',
-                'view'=>'_tab',
-                'data'=>array('data'=>$model->search('department'))
+                'title'=>'本部门其他人员报告',
+                'url'=>url('workreport/info',array('type'=>'department')),
+                'view'=>$tab,
+                'data'=>array('data'=>$data)
+
             ),
             'tab3'=>array(
                 'title'=>'其他部门报告',
-                'view'=>'_tab',
-                'data'=>array('data'=>$model->search('all'))
+                'url'=>url('workreport/info',array('type'=>'all')),
+                'view'=>$tab,
+                'data'=>array('data'=>$data)
             )
 
         ),
-        'viewData'=>array('model'=>$model)
     ))
     ?>
 

@@ -28,6 +28,6 @@ class UserIdentity extends CUserIdentity
     function  assignInfo($name,$id,$pid){
       $this->username = $name ;
       $this->userid   = $id;
-      $this->department = $pid;
+      $this->setState('department',$pid);
     }
 }

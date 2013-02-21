@@ -11,17 +11,21 @@ class WorkreportController extends  Controller
 {
     private $_model;
 
-    public  function  actionInfo(){
+    public  function  actionInfo($type='self'){
         $model = $this->loadModel('search');
         if(isset($_GET['My_Workreport'])){
             $model->attributes = $_GET['My_Workreport'];
 
         }
         $this->setPageTitle('工作汇报列表');
-        $this->render('infolist',array('model'=>$model));
+        $this->render('infolist',array('data'=>$model->search($type),'tab'=>($type=='all' || $type=='department')?'_tabview':'_tab'));
 
     }
-
+    public   function  showTab(){
+       if((!isset($_GET['type'])) || ($_GET['type']=='self')) return 'tab1';
+       if($_GET['type']=='department') return 'tab2';
+       if($_GET['type']=='all') return 'tab3';
+    }
     public  function actionView(){
 
          $model = $this->loadModel('depart');

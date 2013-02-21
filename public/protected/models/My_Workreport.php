@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $username
  * @property string $tname
- * @property string $part
+ * @property int $department
  * @property string $title
  * @property string $ttext
  * @property string $time
@@ -95,19 +95,23 @@ class My_Workreport extends CActiveRecord
        $criteria->condition = 'department';
        $criteria->with = 'depart';
         switch($condition){
-            case 'self':
-                $criteria->compare('userid',user()->getId());//查询登录用户发布的报告
-                break;
             case 'department':
                 $criteria->compare('department',user()->getState('department'));//查询登录用户所在部门发布的报告
+                $criteria->compare('userid',user()->getId(),false,'<>');
                 break;
             case 'all':
-            default: break;
+                $criteria->condition = 'department <> '.user()->getState('department');
+                break;
+            case 'self':
+            default:
+                $criteria->compare('userid',user()->getId());//查询登录用户发布的报告
+                break;
         }
-        $criteria->compare('tname',$this->tname);
-		$criteria->compare('title',$this->title,true);
+       // $criteria->compare('tname',$this->tname);
+		//$criteria->compare('title',$this->title,true);
 		return new CActiveDataProvider('My_Workreport', array(
 			'criteria'=>$criteria,
+
 		));
 	}
 }
