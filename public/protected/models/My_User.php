@@ -70,8 +70,14 @@ class My_User  extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
-		);
+        return array(
+            'depart'=>array(
+                self::BELONGS_TO,
+                'My_Department',
+                'partid'
+
+            )
+        );
 	}
 
 	/**
@@ -117,7 +123,7 @@ class My_User  extends CActiveRecord
 
 		$criteria->compare('pwd',$this->pwd,true);
 
-		$criteria->compare('partid',$this->partid,true);
+		$criteria->compare('partid',$this->partid);
 
 		$criteria->compare('rule',$this->rule,true);
 
@@ -141,11 +147,11 @@ class My_User  extends CActiveRecord
 
 		$criteria->compare('ilevel',$this->ilevel,true);
 
-		$criteria->compare('clocking-in',$this->clocking-in,true);
+
 
 		$criteria->compare('lastlogintime',$this->lastlogintime,true);
 
-		return new CActiveDataProvider('user', array(
+		return new CActiveDataProvider('My_User', array(
 			'criteria'=>$criteria,
 		));
 	}

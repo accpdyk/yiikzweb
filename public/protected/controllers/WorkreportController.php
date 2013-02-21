@@ -13,9 +13,9 @@ class WorkreportController extends  Controller
 
     public  function  actionInfo(){
         $model = $this->loadModel('search');
-        $model->unsetAttributes();
         if(isset($_GET['My_Workreport'])){
             $model->attributes = $_GET['My_Workreport'];
+
         }
         $this->setPageTitle('工作汇报列表');
         $this->render('infolist',array('model'=>$model));

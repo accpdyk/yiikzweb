@@ -11,21 +11,17 @@
     <table width="100%">
         <tr>
             <td class="td1" width="20%"><?php  echo $form->labelEx($model,'tname');?>：</td>
-            <td  width="30%"> <?php  echo $form->textField($model,'tname',array('value'=>user()->getName()));?></td>
+            <td  width="30%"> <?php  echo $form->textField($model,'tname',array('value'=>$model->isNewRecord?user()->getName():$model->tname));?></td>
             <td>
                 <?php  echo $form->error($model,'tname');?>
-                <?php  echo $form->hiddenField($model,'username',array('value'=>user()->getid()));?>
+                <?php  echo $form->hiddenField($model,'userid',array('value'=>user()->getid()));?>
+                <?php  echo $form->hiddenField($model,'department',array('value'=>user()->getState('department')));?>
             </td>
         </tr>
         <tr>
             <td class="td1" width="20%"><?php  echo $form->labelEx($model,'title');?>：</td>
             <td  width="30%"> <?php  echo $form->textField($model,'title');?></td>
             <td> <?php  echo $form->error($model,'title');?></td>
-        </tr>
-        <tr>
-            <td class="td1" width="20%"><?php  echo $form->labelEx($model,'part');?>：</td>
-            <td  width="30%"> <?php  echo $form->dropDownList($model,'part',$this->getDepartmentList());?></td>
-            <td> <?php  echo $form->error($model,'part');?></td>
         </tr>
         <tr>
             <td class="td1" width="20%"><?php echo $form->labelEx($model,'ttext'); ?>:</td>

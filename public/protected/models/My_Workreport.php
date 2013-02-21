@@ -43,15 +43,13 @@ class My_Workreport extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('tname,ttext,title,part','required'),
-			array('username, view_object', 'length', 'max'=>50),
-			array('tname, part', 'length', 'max'=>16),
+            array('tname,ttext,title,department','required'),
 			array('title', 'length', 'max'=>255),
 			array('time', 'length', 'max'=>200),
-			array('ttext', 'safe'),
+			array('ttext,userid', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, tname, part, title, ttext,  time,  view_object, lastmodifydate', 'safe', 'on'=>'search'),
+			array('id, username, tname, department, title, ttext,  time,  view_object, lastmodifydate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +62,7 @@ class My_Workreport extends CActiveRecord
             'depart'=>array(
                 self::BELONGS_TO,
                 'My_department',
-                'part'
+                'department'
             )
 		);
 	}
@@ -78,7 +76,7 @@ class My_Workreport extends CActiveRecord
 			'id' => 'Id',
 			'username' => 'Username',
 			'tname' => '汇报人员',
-			'part' => '阅读对象',
+			'department' => '部门',
 			'title' => '标题',
 			'ttext' => '汇报内容',
 			'time' => '提交时间',
@@ -91,25 +89,23 @@ class My_Workreport extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($condition='')
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-
-		$criteria->compare('username',$this->username,true);
-
-		$criteria->compare('tname',$this->tname,true);
-
-		$criteria->compare('part',$this->part,true);
-
+	$criteria=new CDbCriteria;
+       $criteria->condition = 'department';
+       $criteria->with = 'depart';
+        switch($condition){
+            case 'self':
+                $criteria->compare('userid',user()->getId());//查询登录用户发布的报告
+                break;
+            case 'department':
+                $criteria->compare('department',user()->getState('department'));//查询登录用户所在部门发布的报告
+                break;
+            case 'all':
+            default: break;
+        }
+        $criteria->compare('tname',$this->tname);
 		$criteria->compare('title',$this->title,true);
-
-        $criteria->condition = 'part';
-        $criteria->with = 'depart';
 		return new CActiveDataProvider('My_Workreport', array(
 			'criteria'=>$criteria,
 		));

@@ -1,5 +1,5 @@
 <?php /* @var $this UserController */?>
-<h3><?php  echo $this->pageTitle;?></h3>
+<h3><?php echo $this->pageTitle; ?></h3>
 <?php
    $form=$this->beginWidget('CActiveForm',array(
        'id'=>'register',
@@ -67,8 +67,4 @@
           </td>
       </tr>
   </table>
-
-
-
-
 <?php  $this->endWidget();?>
