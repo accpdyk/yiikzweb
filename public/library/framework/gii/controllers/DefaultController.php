@@ -41,7 +41,9 @@ class DefaultController extends CController
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-                $this->redirect(Yii::app()->createUrl('gii/default/index'));exit;
+
+               $this->redirect(Yii::app()->createUrl('gii/default/index'));
+                exit;
             }
 
 		}

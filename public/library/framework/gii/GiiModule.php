@@ -173,7 +173,7 @@ class GiiModule extends CWebModule
 				'default/error',
 			);
 			if($this->password!==false && Yii::app()->user->isGuest && !in_array($route,$publicPages))
-			Yii::app()->user->loginRequired();
+			return true;//Yii::app()->user->loginRequired();
 			else
 				return true;
 		}
@@ -224,7 +224,6 @@ class GiiModule extends CWebModule
 							'class'=>"$alias.$name.$className",
 						);
 					}
-
 					if(isset($generators[$name]) && is_dir("$path/$name/templates"))
 					{
 						$templatePath="$path/$name/templates";
