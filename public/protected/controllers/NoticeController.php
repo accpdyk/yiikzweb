@@ -11,7 +11,7 @@ class NoticeController extends  Controller
 {
     private  $_model;
     public  function actionInfo(){
-        $model= new My_Notice('search');
+        $model= $this->loadModel('search');
         $model->unsetAttributes();//清空初始变量
         if(isset($_GET['My_Notice'])){
             $model->attributes = $_GET['My_Notice'];
@@ -21,7 +21,7 @@ class NoticeController extends  Controller
        $this->render('infolist',array('model'=>$model));
     }
     public  function actionAdd(){
-       $model = New My_Notice();
+       $model =  $this->loadModel();
        if(isset($_POST['My_Notice'])){
            $model->attributes = $_POST['My_Notice'];
           if($model->validate()){
@@ -43,7 +43,7 @@ class NoticeController extends  Controller
     }
     public  function actionView(){
         if(isset($_GET['id'])){
-            $model = My_Notice::model()->with('depart')->findByPk($_GET['id']);
+            $model =$this->loadModel();// My_Notice::model()->with('depart')->findByPk($_GET['id']);
             $this->pageTitle='查看内部通知';
             $this->render('view',array('model'=>$model));
         }
@@ -60,14 +60,14 @@ class NoticeController extends  Controller
         }
        $this->render('_form',array('model'=>$model));
     }
-    public function loadModel()
+    public function loadModel($condition='')
     {
         if($this->_model===null)
         {
             if(isset($_GET['id']))
                 $this->_model=My_Notice::model()->findbyPk(trim($_GET['id']));
-            if($this->_model===null)
-                throw new CHttpException(404,'The requested page does not exist.');
+            else
+                $this->_model = new My_Notice($condition);
         }
         return $this->_model;
     }

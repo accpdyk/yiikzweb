@@ -14,7 +14,8 @@
             <td  width="30%"> <?php  echo $form->textField($model,'tname',array('value'=>user()->getName()));?></td>
             <td>
                 <?php  echo $form->error($model,'tname');?>
-                <?php  echo $form->hiddenField($model,'username',array('value'=>user()->getid()));?>
+                <?php // echo $form->hiddenField($model,'username',array('value'=>user()->getid()));?>
+                <?php // echo $form->hiddenField($model,'partid',array('value'=>user()->getState('department')))?>
             </td>
         </tr>
 
@@ -22,12 +23,14 @@
         <tr>
             <td class="td1" width="20%"><?php  echo $form->labelEx($model,'title');?>：</td>
             <td  width="30%"> <?php  echo $form->textField($model,'title');?></td>
-            <td> <?php  echo $form->error($model,'title');?></td>
+            <td>
+                <?php  echo $form->error($model,'title');?>
+            </td>
         </tr>
         <tr>
-            <td class="td1" width="20%"><?php  echo $form->labelEx($model,'partid');?>：</td>
-            <td  width="30%"> <?php  echo $form->dropDownList($model,'partid',$this->getDepartmentList());?></td>
-            <td> <?php  echo $form->error($model,'partid');?></td>
+            <td class="td1" width="20%"><?php  echo $form->labelEx($model,'view_object');?>：</td>
+            <td  width="30%"> <?php   echo $form->dropDownList($model,'view_object',$this->getDepartmentList());?></td>
+            <td> <?php  echo $form->error($model,'view_object');?></td>
         </tr>
         <tr>
             <td class="td1" width="20%">通知内容:</td>

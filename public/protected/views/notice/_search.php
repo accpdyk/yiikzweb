@@ -10,11 +10,11 @@
       <tr>
           <td>发布人</td>
           <td><?php echo  $form->textField($model,'tname');?></td>
-          <td>标题</td>
+          <td>通知名称</td>
           <td><?php   echo  $form->textField($model,'title')?></td>
-          <td>所在部门</td>
-          <td><?php  echo $form->dropDownList($model,'partid',$data);?></td>
           <td><?php echo CHtml::submitButton('搜索')?></td>
+          <td width="100">&nbsp;</td>
+          <td><?php  echo CHtml::link('发布内部通知',url('notice/add'))?></td>
       </tr>
   </table
 <?php  $this->endWidget();?>

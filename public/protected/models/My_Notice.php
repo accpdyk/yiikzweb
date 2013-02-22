@@ -5,16 +5,11 @@
  *
  * The followings are the available columns in table 'notice':
  * @property integer $id
- * @property string $username
  * @property string $tname
  * @property string $partid
  * @property string $title
  * @property string $ttext
- * @property string $html
  * @property string $type
- * @property string $time
- * @property string $IP
- * @property string $fjname
  * @property string $view_object
  */
 class My_Notice extends CActiveRecord
@@ -44,13 +39,12 @@ class My_Notice extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('tname,title,ttext,partid','required'),
-			array('username,view_object', 'length', 'max'=>50),
-			array('tname, partid', 'length', 'max'=>16),
+            array('tname,title,ttext','required'),
+			array('tname, partid,view_object', 'length', 'max'=>16),
 			array('ttext', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('tname, partid, type, title', 'safe', 'on'=>'search'),
+			array('tname,title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,13 +54,11 @@ class My_Notice extends CActiveRecord
 	public function relations()
 	{
 		return array(
-           'depart'=>array(
+          /* 'depart'=>array(
                self::BELONGS_TO,
                'My_Department',
                'partid',
-
-
-           )
+           )*/
 		);
 	}
 
@@ -77,16 +69,12 @@ class My_Notice extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'username' => 'Username',
 			'tname' => '发布人',
 			'partid' => '部门',
-			'title' => '通知标题',
+			'title' => '通知名称',
 			'ttext' => '内容',
-			'html' => 'Html',
-			'time' => '发布时间',
-			'IP' => 'Ip',
-			'fjname' => 'Fjname',
-			'view_object' => 'View Object',
+            'time' => '发布时间',
+			'view_object' => '阅读对象',
 		);
 	}
 
@@ -101,18 +89,13 @@ class My_Notice extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+        $criteria->condition = ' view_object in (1,'.user()->getState('department').')';
 
-		$criteria->compare('tname',$this->tname,true);
-
-		$criteria->compare('partid',$this->partid);
+		$criteria->compare('tname',$this->tname);
 
 		$criteria->compare('title',$this->title,true);
 
-		$criteria->compare('time',$this->time,true);
-
-        $criteria->with='depart';
-       // $criteria->join='left outer join  department on  department.id = partid';
+        //$criteria->with='depart';关联查询department
 		return new CActiveDataProvider('My_Notice', array(
 			'criteria'=>$criteria,
             'pagination'=>array(

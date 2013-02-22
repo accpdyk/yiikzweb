@@ -62,7 +62,7 @@ class My_Workreport extends CActiveRecord
             'depart'=>array(
                 self::BELONGS_TO,
                 'My_department',
-                'department'
+                array('department'=>'id'),
             )
 		);
 	}

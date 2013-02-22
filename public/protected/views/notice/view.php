@@ -5,7 +5,6 @@
     'attributes'=>array(
         'tname',
         'title',
-        'depart.type',//组合查询出的type
         'ttext:html',
         'time'
     ),
