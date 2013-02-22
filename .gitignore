@@ -1,3 +1,6 @@
-assets/
-protected/runtime/
-themes/classic/views/
+/.idea
+/.git
+/public/protected/runtime/*
+/public/assets/*
+/.gitignore
+!index.htm
