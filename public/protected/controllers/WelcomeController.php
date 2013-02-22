@@ -35,7 +35,7 @@ class WelcomeController extends  Controller
                 'display'=>'block',
                 'childs'=>array(
                     array('href'=>url('notice/info'),'name'=>'内部通知'),
-                    array('href'=>url('workreport/info'),'name'=>'工作汇报'),
+                    array('href'=>url('workreport/info/type'),'name'=>'工作汇报'),
                     array('href'=>'','name'=>'会议纪要'),
                     array('href'=>'','name'=>'管理规定'),
                     array('href'=>'','name'=>'行政公文'),
@@ -98,7 +98,7 @@ class WelcomeController extends  Controller
                 '_for'=>'system',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'用户管理'),
+                    array('href'=>url('user/info'),'name'=>'用户管理'),
                     array('href'=>'','name'=>'公文管理'),
                     array('href'=>'','name'=>'车辆管理'),
                     array('href'=>'','name'=>'系统设置'),

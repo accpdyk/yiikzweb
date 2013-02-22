@@ -1,8 +1,6 @@
 <?php /* @var $this UserController*/ ?>
 <?php
  $this->renderPartial('_search',array('model'=>$model,'data'=>$this->getDepartmentList()));
-   $str = Yii::app()->user->checkAccess('mark_view');
-var_dump($str);
  $this->widget('zii.widgets.grid.CGridView',array(
     'dataProvider'=>$model->search(),
     'columns'=>array(

@@ -8,7 +8,7 @@
 return array(
     'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
     'name'=>'办公自动化系统',
-    'language'=>'zh',
+    'language'=>'zh_cn',
     'defaultController'=>'login/index',
     // preloading 'log' component
     'preload'=>array('log'),
