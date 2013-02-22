@@ -18,14 +18,23 @@ class WorkreportController extends  Controller
 
         }
         $this->setPageTitle('工作汇报列表');
-        $this->render('infolist',array('data'=>$model->search($type),'tab'=>($type=='all' || $type=='department')?'_tabview':'_tab'));
+        if(user()->checkAccess('admin'))
+            $this->render('adminInfolist',array('data'=>$model->search(),'model'=>$model));
+        else
+            $this->render('infolist',array(
+                'data'=>$model->search($type),
+                'model'=>$model,
+                'tab'=>($type=='all' || $type=='department')?'_tabview':'_tab')
+            );
 
     }
+    //要显示的tab
     public   function  showTab(){
-       if((!isset($_GET['type'])) || ($_GET['type']=='self')) return 'tab1';
+       if((!isset($_GET['type']))|| $_GET['type']=='self') return 'tab1';
        if($_GET['type']=='department') return 'tab2';
        if($_GET['type']=='all') return 'tab3';
     }
+
     public  function actionView(){
 
          $model = $this->loadModel('depart');
