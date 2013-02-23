@@ -1,7 +1,7 @@
 <?php
 
    $form = $this->beginWidget('CActiveForm',array(
-      'id'=>'workreport',
+       'id'=>'workreport',
        'action'=>url($this->route),
        'method'=>'get'
    ));

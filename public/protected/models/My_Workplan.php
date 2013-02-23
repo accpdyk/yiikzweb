@@ -42,10 +42,9 @@ class My_Workplan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('tname,content,title,view_object','required'),
 			array('reply_id, departmentid', 'numerical', 'integerOnly'=>true),
-			array('type, time, view_object', 'length', 'max'=>50),
-			array('title', 'length', 'max'=>255),
-			array('content, note_content', 'safe'),
+			array('content, note_content,title,view_object', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, reply_id, type, title, content, time, note_content, view_object, departmentid', 'safe', 'on'=>'search'),
@@ -72,12 +71,13 @@ class My_Workplan extends CActiveRecord
 			'id' => 'ID',
 			'reply_id' => 'Reply',
 			'type' => 'Type',
-			'title' => 'Title',
-			'content' => 'Content',
-			'time' => 'Time',
-			'note_content' => 'Note Content',
-			'view_object' => 'View Object',
-			'departmentid' => 'Departmentid',
+			'title' => '标题名称',
+            'tname'=>'发布人',
+			'content' => '工作计划',
+			'time' => '发布时间',
+			'note_content' => '标注',
+			'view_object' => '阅读对象',
+			'departmentid' => '部门id',
 		);
 	}
 
