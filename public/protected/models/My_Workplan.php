@@ -75,7 +75,7 @@ class My_Workplan extends CActiveRecord
             'tname'=>'发布人',
 			'content' => '工作计划',
 			'time' => '发布时间',
-			'note_content' => '标注',
+			'note_content' => '批注内容',
 			'view_object' => '阅读对象',
 			'departmentid' => '部门id',
 		);
@@ -85,23 +85,17 @@ class My_Workplan extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($condition='')
 	{
 		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('reply_id',$this->reply_id);
-		$criteria->compare('type',$this->type,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('time',$this->time,true);
-		$criteria->compare('note_content',$this->note_content,true);
-		$criteria->compare('view_object',$this->view_object,true);
-		$criteria->compare('departmentid',$this->departmentid);
-
+        if($condition == 'note'){
+            $criteria->compare('reply_id',$this->id);
+        }else{
+            $criteria->compare('title',$this->title);
+            $criteria->compare('view_object',$this->view_object);
+            $criteria->compare('departmentid',$this->departmentid);
+        }
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

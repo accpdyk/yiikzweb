@@ -48,7 +48,21 @@ class WorkplanController extends  Controller
     public  function actionView(){
 
      $this->setPageTitle('查看详细工作计划');
-     $this->render('view',array('model'=>$this->loadModel()));
+     $model =$this->loadModel();
+     $model->setAttribute('id',$_GET['id']);
+     if(isset($_POST['note_content'])){
+         Yii::app()->db->createCommand()->insert($model->tableName(),array(
+             'tname'=>user()->getName(),
+             'note_content'=>$_POST['note_content'],
+             'time'=>date('Y-m-d H:i:s'),
+             'reply_id'=>$_POST['id'],
+             'title'=>'标注：',
+         ));
+         user()->setFlash('msg','添加成功');
+         $this->refresh();
+
+     }
+     $this->render('view',array('model'=>$model));
     }
 
     protected function loadModel($condition=''){
