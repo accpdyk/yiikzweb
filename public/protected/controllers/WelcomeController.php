@@ -39,7 +39,7 @@ class WelcomeController extends  Controller
                     array('href'=>'','name'=>'会议纪要'),
                     array('href'=>'','name'=>'管理规定'),
                     array('href'=>'','name'=>'行政公文'),
-                    array('href'=>'','name'=>'工作计划'),
+                    array('href'=>url('workplan/info'),'name'=>'工作计划'),
                 )
             ),
             array(
