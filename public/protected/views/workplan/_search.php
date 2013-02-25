@@ -12,7 +12,7 @@ $form = $this->beginWidget('CActiveForm',array(
         <td><?php echo  $form->textField($model,'tname');?></td>
         <td>标题</td>
         <td><?php   echo  $form->textField($model,'title')?></td>
-        <td>所在部门</td>
+
         <td><?php  //echo $form->dropDownList($model,'department',$data);?></td>
         <td><?php echo CHtml::submitButton('搜索')?></td>
         <td>&nbsp;</td>

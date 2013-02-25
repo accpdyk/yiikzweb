@@ -1,13 +1,25 @@
-<script type="text/javascript" src="<?php echo app()->baseUrl;?>/fckeditor/fckeditor.js"></script>
-<script type="text/javascript">
-    var sBasePath ='<?php echo app()->baseUrl;?>/fckeditor/' ;
-    var oFCKeditor = new FCKeditor( '<?php echo $txtname?>' ) ;
-    oFCKeditor.BasePath	= sBasePath ;
-    oFCKeditor.Value	= '<?php echo isset($content)?$content:null?>' ;
-    oFCKeditor.Height	= 600 ;
-    oFCKeditor.Create() ;
-    //-->
+<?php
+// Automatically calculates the editor base path based on the _samples directory.
+// This is usefull only for these samples. A real application should use something like this:
+// $oFCKeditor->BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
 
-</script>
+
+    include("fckeditor/fckeditor_php5.php") ;
+
+    $sBasePath = 'http://www.oa.com.rock/fckeditor/' ;
+
+    $oFCKeditor = new FCKeditor($txtname) ;//textarea的name值
+
+    $oFCKeditor->BasePath	= $sBasePath ;
+
+    $oFCKeditor->Value		= $content ; //textarea的value值
+
+    $oFCKeditor->Height     = 600;
+
+    $oFCKeditor->Create() ;
+
+?>
+
+
 
 

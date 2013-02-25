@@ -52,5 +52,11 @@ class Controller extends CController
        return  My_Department::model()->getDataList();
 
     }
+    //得到阅读对象列表，包含部门和用户
+    public  function getViewObjectList(){
+        $depart = My_Department::model()->getDataList();
+        $user   = My_User::model()->getDataList();
+        return array_merge($depart,$user);
+    }
 
 }

@@ -155,4 +155,19 @@ class My_User  extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    /*
+     *  @return array()
+     */
+    //得到选项数组
+    public  function  getDataList(){
+        $data= $this->findAllBySql('select id,name,partid from '.$this->tableName().' order by  partid');
+        $option=array();
+        if(count($data)){
+            foreach($data as $key){
+                $option[$key->id]=$key->name;
+
+            }
+        }
+        return  $option;
+    }
 }

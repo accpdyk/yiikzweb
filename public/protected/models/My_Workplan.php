@@ -92,8 +92,12 @@ class My_Workplan extends CActiveRecord
         if($condition == 'note'){
             $criteria->compare('reply_id',$this->id);
         }else{
+            $criteria->compare('reply_id',0,false);//不显示批注
             $criteria->compare('title',$this->title);
-            $criteria->compare('view_object',$this->view_object);
+            $criteria->compare('tname',user()->getName(),false);//查询当前用户发布的
+            $criteria->compare('view_object',user()->getName(),true,'or');  //模糊查询 阅读对象 用户
+            $depart = My_Department::model()->findByPk(user()->getState('department'))->type;
+            $criteria->compare('view_object',$depart,true,'or');//模糊查询 阅读对象 部门
             $criteria->compare('departmentid',$this->departmentid);
         }
 		return new CActiveDataProvider($this, array(

@@ -77,7 +77,7 @@ class My_Department extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-     //得到选项数组
+    //得到选项数组
     public  function  getDataList(){
         $data= $this->findAll();
         $option=array(null=>'请选择');

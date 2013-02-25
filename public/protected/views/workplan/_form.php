@@ -26,7 +26,7 @@
         <tr>
             <td class="td1" width="20%"><?php  echo $form->labelEx($model,'view_object');?>：</td>
             <td  width="30%">
-                <?php   echo CHtml::dropDownList('viewlist','',$this->getDepartmentList(),array('id'=>'viewlist'));?>
+                <?php   echo CHtml::dropDownList('viewlist','',$this->getViewObjectList(),array('id'=>'viewlist'));?>
                 <?php  echo CHtml::button('添加',array('onclick'=>'addview()'))?>
                 <?php  //echo CHtml::textField('My_Workplan[view_object]','',array('id'=>'view_object','readonly'=>true)) ?>
                 <?php  echo $form->textField($model,'view_object',array('id'=>'view_object','readonly'=>true));?>
