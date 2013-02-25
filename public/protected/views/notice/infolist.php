@@ -19,9 +19,9 @@
                 'template'=>'{update}{delete}{view}',
                 'buttons'=>array(
                    // 'delete'=>array('visible'=>'($data->tname==user()->getName())?true:false')
-                        'update'=>array('label'=>'修改','imageUrl'=>false, 'options'=>array('style'=>"margin: 1em")),
-                        'delete'=>array('label'=>"删除",'imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
-                         'view'=>array('label'=>'查看','imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
+                'update'=>array('label'=>'修改','visible'=>'$data->tname==user()->getName()?true:false','imageUrl'=>false, 'options'=>array('style'=>"margin: 1em")),
+                'delete'=>array('label'=>"删除",'visible'=>'user()->checkAccess(\'admin\')?true:false','imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
+                 'view'=>array('label'=>'查看','imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
                 )
             ),
         ),
