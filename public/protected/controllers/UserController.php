@@ -66,4 +66,6 @@ class UserController extends  Controller
         }
         return $this->_model;
     }
+
+
 }

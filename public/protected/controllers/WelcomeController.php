@@ -36,10 +36,9 @@ class WelcomeController extends  Controller
                 'childs'=>array(
                     array('href'=>url('notice/info'),'name'=>'内部通知'),
                     array('href'=>url('workreport/info/type'),'name'=>'工作汇报'),
-                    array('href'=>'','name'=>'会议纪要'),
-                    array('href'=>'','name'=>'管理规定'),
-                    array('href'=>'','name'=>'行政公文'),
                     array('href'=>url('workplan/info'),'name'=>'工作计划'),
+                    array('href'=>'','name'=>'管理规定'),
+
                 )
             ),
             array(
