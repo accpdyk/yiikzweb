@@ -1,6 +1,7 @@
 /.idea
 /.git
 /public/protected/runtime/*
+/public/backup/*
 /public/assets/*
 /.gitignore
 !index.htm
