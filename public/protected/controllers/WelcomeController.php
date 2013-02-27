@@ -98,7 +98,7 @@ class WelcomeController extends  Controller
                 'display'=>'none',
                 'childs'=>array(
                     array('href'=>url('user/info'),'name'=>'用户管理'),
-                    array('href'=>'','name'=>'公文管理'),
+                    array('href'=>url('db/index'),'name'=>'数据管理'),
                     array('href'=>'','name'=>'车辆管理'),
                     array('href'=>'','name'=>'系统设置'),
                     array('href'=>'','name'=>'单位及职位管理'),
@@ -140,4 +140,14 @@ class WelcomeController extends  Controller
         return  $data;
     }
 
+    //显示错误信息
+    public  function actionError(){
+        if($error=Yii::app()->errorHandler->error)
+        {
+            if(Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('//error', $error);
+        }
+    }
 }
