@@ -19,12 +19,12 @@ class WorkreportController extends  Controller
         }
         $this->setPageTitle('工作汇报列表');
         if(user()->checkAccess('admin'))
-            $this->render('adminInfolist',array('data'=>$model->search(),'model'=>$model));
+            $this->render('_tab',array('data'=>$model->search('all'),'model'=>$model));
         else
             $this->render('infolist',array(
                 'data'=>$model->search($type),
                 'model'=>$model,
-                'tab'=>($type=='all' || $type=='department')?'_tabview':'_tab')
+                'tab'=>($type=='other' || $type=='department')?'_tabview':'_tab')
             );
 
     }

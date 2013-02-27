@@ -42,30 +42,6 @@ class WelcomeController extends  Controller
                 )
             ),
             array(
-                'itemname'=>'公共信息',
-                'href'=>'',  //最先链接的网址
-                '_for'=>'publicinfo',
-                'display'=>'none',
-                'childs'=>array(
-                    array('href'=>'','name'=>'车辆查看'),
-                    array('href'=>'','name'=>'常用电话'),
-                    array('href'=>'','name'=>'网络调查'),
-                    array('href'=>'','name'=>'常用信息查询')
-                )
-            ),
-            array(
-                'itemname'=>'交流中心',
-                'href'=>'',  //最先链接的网址
-                '_for'=>'exchange',
-                'display'=>'none',
-                'childs'=>array(
-                    array('href'=>'','name'=>'讨论中心'),
-                    array('href'=>'','name'=>'工程信息'),
-                    array('href'=>'','name'=>'文字会议'),
-                    array('href'=>'','name'=>'软件下载'),
-                )
-            ),
-            array(
                 'itemname'=>'个人助理',
                 'href'=>'',  //最先链接的网址
                 '_for'=>'personal',

@@ -95,14 +95,16 @@ class My_Workreport extends CActiveRecord
        $criteria->condition = 'department';
        $criteria->with = 'depart';
         switch($condition){
-            case 'department':
+            case 'department'://本部门
                 $criteria->compare('department',user()->getState('department'));//查询登录用户所在部门发布的报告
                 $criteria->compare('userid',user()->getId(),false,'<>');
                 break;
-            case 'all':
+            case 'other'://其他部门
                 $criteria->condition = 'department <> '.user()->getState('department');
                 break;
-            case 'self':
+            case 'all'://查看所有
+                break;
+            case 'self'://当前用户
             default:
                 $criteria->compare('userid',user()->getId());//查询登录用户发布的报告
                 break;

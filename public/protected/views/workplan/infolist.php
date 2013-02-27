@@ -5,7 +5,7 @@
     </style>
     <?php /* @var $this NoticeController*/
 
-    var_dump($model->search());
+
     $this->renderPartial('_search',array('model'=>$model));
     $this->widget('zii.widgets.grid.CGridView',array(
         'dataProvider'=>$model->search(),

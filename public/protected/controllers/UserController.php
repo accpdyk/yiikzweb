@@ -10,6 +10,20 @@
 class UserController extends  Controller
 {
     private  $_model;
+  
+    public  function accessRules(){
+        return  array(
+            array(
+                'allow',
+                'roles'=>array('admin'),
+            ),
+            array(
+                'deny',
+                'users'=>array('*'),
+                'message'=>'你没有权限'
+            )
+        );
+    }
     public  function actionInfo(){
 
         $model = new My_User('search');

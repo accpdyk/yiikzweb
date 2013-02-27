@@ -38,7 +38,6 @@ class Controller extends CController
             array(
                 'allow',
                 'users'=>array('@'),
-                'message'=>'无权限访问'
             ),
             array(
                 'deny',
