@@ -12,6 +12,7 @@
     .content h3 span a{ margin-left: 2em;}
     .content .td1{ text-align: right;}
     .footer{ height: 100px; border: solid; width: 100%;}
+    .tab{ width: 90%; margin: 0 auto; line-height: 30px;}
 </style>
 <body>
 <?php  echo $content;?>

@@ -4,17 +4,17 @@
 // $oFCKeditor->BasePath = '/fckeditor/' ;	// '/fckeditor/' is the default value.
 
 
-    include("fckeditor/fckeditor_php5.php") ;
+    include_once("fckeditor/fckeditor_php5.php") ;
 
-    $sBasePath = 'http://www.oa.com.rock/fckeditor/' ;
-
+    $sBasePath = app()->baseUrl.'/fckeditor/' ;
+     if(!isset($height)) $height = 600;
     $oFCKeditor = new FCKeditor($txtname) ;//textarea的name值
 
     $oFCKeditor->BasePath	= $sBasePath ;
 
     $oFCKeditor->Value		= $content ; //textarea的value值
 
-    $oFCKeditor->Height     = 600;
+    $oFCKeditor->Height     = $height;
 
     $oFCKeditor->Create() ;
 

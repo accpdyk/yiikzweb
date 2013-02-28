@@ -10,6 +10,25 @@
 class NoticeController extends  Controller
 {
     private  $_model;
+    public  function accessRules(){
+        return array(
+           array(
+              'allow',
+              'actions'=>array('info','add','view'),
+              'users'=>array('@')
+           ),
+           array(
+               'allow',
+               'actions'=>array('update'),
+               'expression'=>array($this,'authChk'),
+           ),
+            array(
+                'deny',
+                'users'=>array('*'),
+                'message'=>'无权限访问',
+            )
+        );
+    }
     public  function actionInfo(){
         $model= $this->loadModel('search');
         $model->unsetAttributes();//清空初始变量
@@ -49,7 +68,7 @@ class NoticeController extends  Controller
         }
     }
     public  function  actionUpdate(){
-       $model = $this->loadModel();
+       $model = $this->_model;//由于authChk中，此函数已经将model（含有$_GET[id]）实例化,没有必要再应用$this->loadModel(),要不然返回的将是空值
        $this->pageTitle='修改内部通知';
         if(isset($_POST['My_Notice'])){
           $model->attributes = $_POST['My_Notice'];
@@ -64,12 +83,23 @@ class NoticeController extends  Controller
     {
         if($this->_model===null)
         {
-            if(isset($_GET['id']))
+            if(isset($_GET['id'])):
                 $this->_model=My_Notice::model()->findbyPk(trim($_GET['id']));
-            else
+            else:
                 $this->_model = new My_Notice($condition);
+            endif;
+           return $this->_model;
         }
-        return $this->_model;
+
+    }
+    //CAccessRule的权限判断，只允许发布文档的用户修改文档
+    public  function authChk($user,$rule){
+       //如果用户名和此文章用户名相同，则可以更改
+          if(user()->getName()==$this->loadModel()->tname)
+               return true;
+          else
+               return false;
+
     }
 
 
