@@ -1,5 +1,5 @@
 <div class="content">
-    <h3><?php  echo $this->pageTitle;?> <span><a href="<?php echo url('workreport/info') ?>">[返回]</a></span></h3>
+    <h3><?php  echo $this->pageTitle;?> <span><a href="<?php echo url('workreport/info/type') ?>">[返回]</a></span></h3>
     <?php $this->widget('zii.widgets.CDetailView', array(
     'data'=>$model,
     'attributes'=>array(

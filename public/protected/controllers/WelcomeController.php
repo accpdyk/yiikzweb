@@ -60,7 +60,6 @@ class WelcomeController extends  Controller
                 '_for'=>'mailbox',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'公共信件'),
                     array('href'=>'','name'=>'写邮件'),
                     array('href'=>'','name'=>'收件箱'),
                     array('href'=>'','name'=>'发件箱'),
@@ -75,14 +74,14 @@ class WelcomeController extends  Controller
                 'childs'=>array(
                     array('href'=>url('user/info'),'name'=>'用户管理'),
                     array('href'=>url('db/index'),'name'=>'数据管理'),
-                    array('href'=>'','name'=>'车辆管理'),
+                    array('href'=>url('car/info'),'name'=>'车辆管理'),
                     array('href'=>'','name'=>'系统设置'),
                     array('href'=>'','name'=>'单位及职位管理'),
                     array('href'=>'','name'=>'工程信息设置'),
                     array('href'=>'','name'=>'质量监督设置'),
                 )
             ),
-            array(
+        /*    array(
                 'itemname'=>'数据管理',
                 'href'=>'',  //最先链接的网址
                 '_for'=>'database',
@@ -93,7 +92,7 @@ class WelcomeController extends  Controller
                     array('href'=>'','name'=>'数据压缩'),
                     array('href'=>'','name'=>'删除汇报'),
                 )
-            ),
+            ),*/
             array(
                 'itemname'=>'电子邮件',
                 'href'=>'',  //最先链接的网址

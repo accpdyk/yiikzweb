@@ -19,7 +19,7 @@
                 'template'=>'{update}{delete}{view}{set}',
                 'buttons'=>array(
                     'update'=>array('label'=>'修改','url'=>'url(\'car/edit\',array(\'id\'=>$data->id))','imageUrl'=>false, 'options'=>array('style'=>"margin: 1em")),
-                    'delete'=>array('label'=>"删除",'imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
+                    'delete'=>array('label'=>"删除",'imageUrl'=>false,'options'=>array('style'=>"margin: 1em"),'visible'=>'user()->checkAccess(\'admin\')?true:false'),
                      'view'=>array('label'=>'查看','imageUrl'=>false,'options'=>array('style'=>"margin: 1em")),
                      'set'=>array('label'=>"设置",'url'=>'url(\'car/state\',array(\'id\'=>$data->id))','options'=>array('style'=>'margin:1em'))
                 )

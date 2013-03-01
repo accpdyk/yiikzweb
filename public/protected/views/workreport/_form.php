@@ -1,7 +1,7 @@
 <?php /* @var $this WorkreportController*/?>
 <div class="content">
     <h3><?php echo $this->pageTitle;?>
-        <span><a href="<?php echo url('workreport/info') ?>">[返回]</a></span>
+        <span><a href="<?php echo url('workreport/info/type') ?>">[返回]</a></span>
     </h3>
     <?php $form=$this->beginWidget('CActiveForm', array(
     'id'=>'Notice-form',
