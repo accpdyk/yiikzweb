@@ -13,6 +13,7 @@
     .content .td1{ text-align: right;}
     .footer{ height: 100px; border: solid; width: 100%;}
     .tab{ width: 90%; margin: 0 auto; line-height: 30px;}
+    .tab input,.tab select { height:24px; vertical-align: middle; }
 </style>
 <body>
 <?php  echo $content;?>

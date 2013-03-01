@@ -56,6 +56,20 @@ class My_ReceiveMail extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+          'users'=>array(
+                self::BELONGS_TO,
+                'My_User',
+                array('addresser'=>'id'),
+                'select'=>'name',
+
+            ),
+            'mail'=>array(
+                self::BELONGS_TO,
+                'My_SendMail',
+                array('send_mail_id'=>'id'),
+                'select'=>array('title','content'),
+
+            )
 		);
 	}
 
@@ -66,10 +80,11 @@ class My_ReceiveMail extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'addressee' => 'Addressee',
-			'send_mail_id' => 'Send Mail',
-			'iscopy' => 'Iscopy',
-			'isread' => 'Isread',
+			'addressee' => '收件人',
+			'send_mail_id' => '邮件ID',
+			'iscopy' => ' 是否抄送',
+			'isread' => '是否阅读',
+            'addresser'=>'发件人'
 		);
 	}
 
@@ -83,15 +98,18 @@ class My_ReceiveMail extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('addressee',$this->addressee,true);
+		$criteria->compare('addressee',5);
 		$criteria->compare('send_mail_id',$this->send_mail_id,true);
 		$criteria->compare('iscopy',$this->iscopy,true);
 		$criteria->compare('isread',$this->isread,true);
-
+       // $criteria->with = 'users';
+        //$criteria->with = 'mail';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+    //发送成功后，插入收件数据表
+    public  function  afterSend($data){
+       Yii::app()->db->createCommand()->insert($this->tableName(),$data);
+    }
 }

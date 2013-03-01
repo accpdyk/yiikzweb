@@ -160,7 +160,7 @@ class My_User  extends CActiveRecord
      */
     //得到选项数组
     public  function  getDataList(){
-        $data= $this->findAllBySql('select id,name,partid from '.$this->tableName().' order by  partid');
+        $data = $this->getData();
         $option=array();
         if(count($data)){
             foreach($data as $key){
@@ -169,5 +169,21 @@ class My_User  extends CActiveRecord
             }
         }
         return  $option;
+    }
+    //含有请选择的
+    public  function  getSelectList(){
+        $data = $this->getData();
+        $option=array(null=>'请选择');
+        if(count($data)){
+            foreach($data as $key){
+                $option[$key->id]=$key->name;
+
+            }
+        }
+        return  $option;
+    }
+    protected  function getData(){
+        $data= $this->findAllBySql('select id,name,partid from '.$this->tableName().' order by  partid');
+        return $data;
     }
 }

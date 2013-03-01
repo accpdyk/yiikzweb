@@ -8,6 +8,7 @@
 
     $sBasePath = app()->baseUrl.'/fckeditor/' ;
      if(!isset($height)) $height = 600;
+     if(!isset($ToolbarSet))$ToolbarSet ='Default';//工具栏
     $oFCKeditor = new FCKeditor($txtname) ;//textarea的name值
 
     $oFCKeditor->BasePath	= $sBasePath ;
@@ -15,6 +16,8 @@
     $oFCKeditor->Value		= $content ; //textarea的value值
 
     $oFCKeditor->Height     = $height;
+
+    $oFCKeditor->ToolbarSet = $ToolbarSet;
 
     $oFCKeditor->Create() ;
 

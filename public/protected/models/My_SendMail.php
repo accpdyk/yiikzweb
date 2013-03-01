@@ -40,6 +40,7 @@ class My_SendMail extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('addressee, title,content','required'),
 			array('addressee, copy, title, addressor', 'length', 'max'=>200),
 			array('time, content', 'safe'),
 			// The following rule is used by search().
@@ -56,6 +57,12 @@ class My_SendMail extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'users'=>array(
+             self::BELONGS_TO,
+               'My_User',
+               array('addressee'=>'id'),
+               'select'=>'name'
+            )
 		);
 	}
 
@@ -66,12 +73,12 @@ class My_SendMail extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'addressee' => 'Addressee',
-			'copy' => 'Copy',
-			'title' => 'Title',
-			'time' => 'Time',
-			'content' => 'Content',
-			'addressor' => 'Addressor',
+			'addressee' => '收件人',
+			'copy' => '抄送',
+			'title' => '主题',
+			'time' => '发送时间',
+			'content' => '邮件内容',
+			'addressor' => '发件人',
 		);
 	}
 
@@ -85,15 +92,8 @@ class My_SendMail extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('addressee',$this->addressee,true);
-		$criteria->compare('copy',$this->copy,true);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('time',$this->time,true);
-		$criteria->compare('content',$this->content,true);
-		$criteria->compare('addressor',$this->addressor,true);
-
+		$criteria->compare('addressor',user()->getId());
+        $criteria->with = 'users';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
