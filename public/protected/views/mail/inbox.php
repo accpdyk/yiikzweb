@@ -12,9 +12,15 @@
                 'class'=>'CButtonColumn',
                 'header'=>'操作',
                 'headerHtmlOptions'=>array('width'=>'200px'),
-                'template'=>'{view}',
+                'template'=>'{view}{delete}',
                 'buttons'=>array(
-                    'view'=>array('label'=>'阅读邮件','imageUrl'=>false,'url'=>'url(\'mail/view\',array(\'id\'=>$data->send_mail_id))','click')
+                    'view'=>array('label'=>'阅读邮件','imageUrl'=>false,'url'=>'url(\'mail/view\',array(\'id\'=>$data->send_mail_id))'),
+                    'delete'=>array('label'=>"删除邮件",
+                                    'imageUrl'=>false,
+                                    'options'=>array('style'=>'margin-left:2em'),
+
+                    ),
+
                 )
             )
         ),

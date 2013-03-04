@@ -56,13 +56,14 @@ class My_ReceiveMail extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-          'users'=>array(
+          'users'=>array( //连接到用户表
                 self::BELONGS_TO,
                 'My_User',
                 array('addresser'=>'id'),
                 'select'=>'name',
 
             ),
+            //发送邮件表
             'mail'=>array(
                 self::BELONGS_TO,
                 'My_SendMail',
@@ -99,6 +100,7 @@ class My_ReceiveMail extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		$criteria->compare('addressee',user()->getId());
+        $criteria->compare('isdelete','n');
        // $criteria->with = 'users';
         //$criteria->with = 'mail';
 		return new CActiveDataProvider($this, array(
@@ -115,4 +117,13 @@ class My_ReceiveMail extends CActiveRecord
      Yii::app()->db->createCommand()->update($this->tableName(),$column,$where,$param);
      
    }
+    //删除到回收站
+    public  function  putRecycle(){
+        Yii::app()->db->createCommand()->update(
+            $this->tableName(),
+            array('isdelete'=>'y'),
+            array('and','id=:aid'),
+            array(':aid'=>$_GET['id'])
+        );
+    }
 }

@@ -37,7 +37,7 @@ class WelcomeController extends  Controller
                     array('href'=>url('notice/info'),'name'=>'内部通知'),
                     array('href'=>url('workreport/info/type'),'name'=>'工作汇报'),
                     array('href'=>url('workplan/info'),'name'=>'工作计划'),
-                    array('href'=>'','name'=>'管理规定'),
+                  //  array('href'=>'','name'=>'管理规定'),
 
                 )
             ),
@@ -63,7 +63,7 @@ class WelcomeController extends  Controller
                     array('href'=>url('mail/send'),'name'=>'写邮件'),
                     array('href'=>url('mail/inbox'),'name'=>'收件箱'),
                     array('href'=>url('mail/outbox'),'name'=>'发件箱'),
-                    array('href'=>'','name'=>'回收站'),
+                    array('href'=>url('mail/recycle'),'name'=>'回收站'),
                 )
             ),
             array(

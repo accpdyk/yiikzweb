@@ -87,16 +87,24 @@ class My_SendMail extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($condition='')
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
-
 		$criteria=new CDbCriteria;
 		$criteria->compare('addressor',user()->getId());
+
+        $criteria->compare('isdelete',isset($condition)?$condition:'n');
         $criteria->with = 'users';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+    //删除到回收站
+    public  function  putRecycle(){
+        Yii::app()->db->createCommand()->update(
+             $this->tableName(),
+             array('isdelete'=>'y'),
+             array('and','id=:aid'),
+             array(':aid'=>$_GET['id'])
+        );
+    }
 }

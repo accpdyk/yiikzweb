@@ -58,15 +58,22 @@ class MailController extends  Controller
     }
     //回收站
     public  function actionRecycle(){
-
-
-
+      $this->render('recycle',array('model'=>$this->loadModel()));
+    }
+    public  function  actionDelete(){
+        if(isset($_GET['id'])){
+            if(stripos(app()->request->urlReferrer,'inbox'))
+                 My_ReceiveMail::model()->putRecycle();
+            else
+                My_SendMail::model()->putRecycle();
+        }
 
     }
+
     //查看详细
     public  function actionView(){
        $model = My_SendMail::model()->findByPk(trim($_GET['id']))->with('users');
-       if(!is_null(app()->request->urlReferrer)){ //标记已阅读
+       if(!is_null(app()->request->urlReferrer)){ //判断 HTTP_REFERER
            if(stripos(app()->request->urlReferrer,'inbox')){
             My_ReceiveMail::model()->hadRead(
                   array('isread'=>'y'),
