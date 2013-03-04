@@ -60,9 +60,9 @@ class WelcomeController extends  Controller
                 '_for'=>'mailbox',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'写邮件'),
-                    array('href'=>'','name'=>'收件箱'),
-                    array('href'=>'','name'=>'发件箱'),
+                    array('href'=>url('mail/send'),'name'=>'写邮件'),
+                    array('href'=>url('mail/inbox'),'name'=>'收件箱'),
+                    array('href'=>url('mail/outbox'),'name'=>'发件箱'),
                     array('href'=>'','name'=>'回收站'),
                 )
             ),
@@ -92,7 +92,7 @@ class WelcomeController extends  Controller
                     array('href'=>'','name'=>'数据压缩'),
                     array('href'=>'','name'=>'删除汇报'),
                 )
-            ),*/
+            ),
             array(
                 'itemname'=>'电子邮件',
                 'href'=>'',  //最先链接的网址
@@ -101,7 +101,7 @@ class WelcomeController extends  Controller
                 'childs'=>array(
                     array('href'=>'','name'=>'电子邮件'),
                 )
-            ),
+            ),*/
             array(
                 'itemname'=>'任务安排',
                 'href'=>'',  //最先链接的网址

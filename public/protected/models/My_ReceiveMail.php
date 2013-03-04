@@ -98,10 +98,7 @@ class My_ReceiveMail extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->compare('addressee',5);
-		$criteria->compare('send_mail_id',$this->send_mail_id,true);
-		$criteria->compare('iscopy',$this->iscopy,true);
-		$criteria->compare('isread',$this->isread,true);
+		$criteria->compare('addressee',user()->getId());
        // $criteria->with = 'users';
         //$criteria->with = 'mail';
 		return new CActiveDataProvider($this, array(
@@ -112,4 +109,10 @@ class My_ReceiveMail extends CActiveRecord
     public  function  afterSend($data){
        Yii::app()->db->createCommand()->insert($this->tableName(),$data);
     }
+    //更新已阅读
+   public  function hadRead($column,$where,$param){
+
+     Yii::app()->db->createCommand()->update($this->tableName(),$column,$where,$param);
+     
+   }
 }

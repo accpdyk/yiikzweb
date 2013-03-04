@@ -108,6 +108,8 @@ return array(
                 // uncomment the following to show log messages on web pages
                 array(
                     'class'=>'CWebLogRoute',
+                    'levels'=>'trace',     //级别为trace
+                    'categories'=>'system.db.*'
                 ),
             ),
         ),

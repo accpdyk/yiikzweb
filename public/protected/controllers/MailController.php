@@ -61,8 +61,19 @@ class MailController extends  Controller
     }
     //查看详细
     public  function actionView(){
-        $model = My_SendMail::model()->findByPk(trim($_GET['id']))->with('users');
-        $this->render('_view',array('model'=>$model));
+       $model = My_SendMail::model()->findByPk(trim($_GET['id']))->with('users');
+       if(!is_null(app()->request->urlReferrer)){ //标记已阅读
+           if(stripos(app()->request->urlReferrer,'inbox')){
+            My_ReceiveMail::model()->hadRead(
+                  array('isread'=>'y'),
+                  array('and','send_mail_id=:id','addressee=:uid','isread=:no'),
+                  array(':id'=>$_GET['id'],'uid'=>user()->getId(),':no'=>'n')
+            );
+           }
+       }
+
+
+       $this->render('_view',array('model'=>$model));
     }
     //对于抄送的，循环添加的接受邮件列表中
     protected  function  afterSend($copy,$receiveData){
