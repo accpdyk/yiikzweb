@@ -3,5 +3,6 @@
 /public/protected/runtime/*
 /public/backup/*
 /public/assets/*
+/public/uploads/*
 /.gitignore
 !index.htm

@@ -6,7 +6,10 @@
     $form = $this->beginWidget('CActiveForm',array(
          'id'=>'mailForm',
          'enableClientValidation'=>true,
-         'enableAjaxValidation'=>false
+         'enableAjaxValidation'=>false,
+         'htmlOptions'=>array(
+             'enctype'=>'multipart/form-data'
+         )
      ));
 ?>
 <table class="tab">
@@ -37,6 +40,11 @@
         <td  align='right'><?php echo  $form->labelEx($model,'content');?>:</td>
         <td><?php $this->renderPartial('//fckeditor',array('txtname'=>'My_SendMail[content]','content'=>$model->content,'height'=>200,'ToolbarSet'=>'Basic')) ?></td>
         <td><?php echo $form->error($model,'content'); ?></td>
+    </tr>
+    <tr>
+        <td align='right'>上传附件:</td>
+        <td><?php echo   $form->FileField($model,'filename')?></td>
+        <td><?php echo $form->error($model,'filename'); ?></td>
     </tr>
     <tr>
         <td>&nbsp;</td>

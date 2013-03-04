@@ -18,7 +18,11 @@ class MailController extends  Controller
         if(isset($_POST['My_SendMail'])){
             $model->attributes = $_POST['My_SendMail'];
             if($model->validate()){
+                $mUpload = CUploadedFile::getInstance($model,'filename');
+                $fileAllPath =  dirname(app()->basePath).DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.iconv("UTF-8","gb2312", $mUpload->name); //需要编码转换
+                $mUpload->saveAs($fileAllPath);
                 $model->time = date('Y-m-d H:i:s');
+                $model->filename = $mUpload->getName();
                 $model->addressor = user()->getId();
                 $model->save();
                 $receiveData = array(

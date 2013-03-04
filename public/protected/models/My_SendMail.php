@@ -42,7 +42,7 @@ class My_SendMail extends CActiveRecord
 		return array(
             array('addressee, title,content','required'),
 			array('addressee, copy, title, addressor', 'length', 'max'=>200),
-			array('time, content', 'safe'),
+			array('time, content，filename', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, addressee, copy, title, time, content, addressor', 'safe', 'on'=>'search'),
@@ -79,6 +79,7 @@ class My_SendMail extends CActiveRecord
 			'time' => '发送时间',
 			'content' => '邮件内容',
 			'addressor' => '发件人',
+            'filename'=>'上传文件名'
 		);
 	}
 
