@@ -30,7 +30,7 @@ class WelcomeController extends  Controller
         $data = array(
             array(
                 'itemname'=>'行政管理',
-                'href'=>'',  //最先链接的网址
+                'href'=>url('notice/info'),  //最先链接的网址
                 '_for'=>'manage',
                 'display'=>'block',
                 'childs'=>array(
@@ -56,7 +56,7 @@ class WelcomeController extends  Controller
             ),
             array(
                 'itemname'=>'内部信箱',
-                'href'=>'',  //最先链接的网址
+                'href'=>url('mail/send'),  //最先链接的网址
                 '_for'=>'mailbox',
                 'display'=>'none',
                 'childs'=>array(
@@ -68,7 +68,7 @@ class WelcomeController extends  Controller
             ),
             array(
                 'itemname'=>'系统管理',
-                'href'=>'',  //最先链接的网址
+                'href'=>url('user/info'),  //最先链接的网址
                 '_for'=>'system',
                 'display'=>'none',
                 'childs'=>array(
@@ -77,8 +77,6 @@ class WelcomeController extends  Controller
                     array('href'=>url('car/info'),'name'=>'车辆管理'),
                     array('href'=>'','name'=>'系统设置'),
                     array('href'=>'','name'=>'单位及职位管理'),
-                    array('href'=>'','name'=>'工程信息设置'),
-                    array('href'=>'','name'=>'质量监督设置'),
                 )
             ),
         /*    array(
