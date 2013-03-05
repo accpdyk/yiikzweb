@@ -147,4 +147,7 @@ class My_Car extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+    public  function delSelect($arr){
+        Yii::app()->db->createCommand()->delete($this->tableName(),array('in','id',$arr));
+    }
 }

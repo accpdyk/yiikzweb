@@ -27,6 +27,13 @@ class CarController extends  Controller
         }
 
     }
+    //删除所选
+    public  function actionDelSelect(){
+        if(isset($_GET['aid'])){
+            $idArr = explode(',',$_GET['aid']);
+            $this->loadModel()->delSelect($idArr);
+        }
+    }
     //查看详细信息
     public  function actionView(){
         if(isset($_GET['id'])){

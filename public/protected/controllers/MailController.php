@@ -40,10 +40,8 @@ class MailController extends  Controller
         }
         $this->render('send',array('model'=>$model,'data'=>$userList));
 
-
-
-
     }
+
     //收件箱
     public  function actionInbox(){
 
@@ -51,15 +49,22 @@ class MailController extends  Controller
        $this->render('inbox',array('model'=>$model));
 
     }
+
+
     //已发送邮件
     public  function actionOutbox(){
         $model =  $this->loadModel();
         $this->render('outbox',array('model'=>$model));
     }
+
+
     //回收站
     public  function actionRecycle(){
       $this->render('recycle',array('model'=>$this->loadModel()));
     }
+
+
+    //放入回收站
     public  function  actionDelete(){
         if(isset($_GET['id'])){
             if(stripos(app()->request->urlReferrer,'inbox'))
@@ -86,6 +91,7 @@ class MailController extends  Controller
 
        $this->render('_view',array('model'=>$model));
     }
+
     //对于抄送的，循环添加的接受邮件列表中
     protected  function  afterSend($copy,$receiveData){
         if(!is_null($copy)){
@@ -97,6 +103,7 @@ class MailController extends  Controller
             }
         }
     }
+
     protected  function loadModel($condition=''){
 
         if($this->_model ===null){
