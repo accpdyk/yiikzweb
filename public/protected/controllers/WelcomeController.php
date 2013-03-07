@@ -101,13 +101,13 @@ class WelcomeController extends  Controller
             ),*/
             array(
                 'itemname'=>'任务安排',
-                'href'=>'',  //最先链接的网址
+                'href'=>url('task/doing'),  //最先链接的网址
                 '_for'=>'task',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'待办任务'),
-                    array('href'=>'','name'=>'任务查询'),
-                    array('href'=>'','name'=>'发布任务'),
+                    array('href'=>url('task/doing'),'name'=>'待办任务'),
+                    array('href'=>url('task/info'),'name'=>'任务查询'),
+                    array('href'=>url('task/public'),'name'=>'发布任务'),
                 )
             ),
         );
