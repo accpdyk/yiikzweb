@@ -41,19 +41,19 @@ class WelcomeController extends  Controller
 
                 )
             ),
-            array(
+           /* array(
                 'itemname'=>'个人助理',
                 'href'=>'',  //最先链接的网址
                 '_for'=>'personal',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'个人通讯录'),
+                    array('href'=>url('telbook/info'),'name'=>'公司通讯录'),
                     array('href'=>'','name'=>'日程安排'),
                     array('href'=>'','name'=>'考勤状态'),
                     array('href'=>'','name'=>'修改资料'),
                     array('href'=>'','name'=>'个人档案'),
                 )
-            ),
+            ),*/
             array(
                 'itemname'=>'内部信箱',
                 'href'=>url('mail/send'),  //最先链接的网址
@@ -76,7 +76,6 @@ class WelcomeController extends  Controller
                     array('href'=>url('db/index'),'name'=>'数据管理'),
                     array('href'=>url('car/info'),'name'=>'车辆管理'),
                     array('href'=>'','name'=>'系统设置'),
-                    array('href'=>'','name'=>'单位及职位管理'),
                 )
             ),
         /*    array(
@@ -106,7 +105,9 @@ class WelcomeController extends  Controller
                 '_for'=>'task',
                 'display'=>'none',
                 'childs'=>array(
-                    array('href'=>'','name'=>'任务'),
+                    array('href'=>'','name'=>'待办任务'),
+                    array('href'=>'','name'=>'任务查询'),
+                    array('href'=>'','name'=>'发布任务'),
                 )
             ),
         );
