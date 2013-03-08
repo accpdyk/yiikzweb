@@ -14,7 +14,10 @@ class WelcomeController extends  Controller
         $this->render('body',$this->_data);
     }
     public  function  actionMain(){
-        $this->render('welcome');
+        $uid = user()->getId();
+        $this->_data['task'] = My_Taskmain::model()->countUnfinished($uid);
+        $this->_data['mail'] = My_ReceiveMail::model()->countUnread($uid);
+        $this->render('welcome',$this->_data);
     }
 
     /*

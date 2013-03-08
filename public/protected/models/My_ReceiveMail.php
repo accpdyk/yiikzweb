@@ -126,4 +126,10 @@ class My_ReceiveMail extends CActiveRecord
             array(':aid'=>$_GET['id'])
         );
     }
+    //查询未读邮件,条数
+    public  function  countUnread($uid){
+
+       return $this->countBySql('select count(*) from  '.$this->tableName().'  where isread = :str and addressee = :uid',array(':str'=>'n',':uid'=>$uid));
+
+    }
 }

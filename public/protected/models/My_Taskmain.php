@@ -110,4 +110,10 @@ class My_Taskmain extends CActiveRecord
             array(':id'=>$tid)
         );
     }
+    //查询未完成任务数
+    public  function  countUnfinished($uid){
+
+      return  $this->countBySql(' SELECT COUNT(*) FROM '.$this->tableName().'  WHERE finished = :str and uid =:userid',array(':str'=>'n',':userid'=>$uid));
+
+    }
 }
